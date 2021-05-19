@@ -1,0 +1,14 @@
+
+# RewriteEngine On 
+# RewriteRule ^(.*)$ public/$1 [L]
+# # RewriteCond %{HTTP_HOST} ^(www\.)?agricfocus\.com$ [NC]
+# # RewriteRule ^$ https://www.agricfocus.com%{REQUEST_URI} [R,L]
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Force SSL
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # Remove public folder form URL
+  RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

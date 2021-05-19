@@ -1,0 +1,7 @@
+$('#btc_row').hide();var sid='';var btc_val=getCurrencyRate('btc');$("#service_id").change(function(){var service=$(this).children("option:selected").text();sid=$(this).children("option:selected").val();var amt=$('#amount').val();new_amt=getServiceRate(sid)*amt;$('#get_amount').val("N"+addCommas(new_amt));btcV=(amt/btc_val).toFixed(8);if((service.toLowerCase()=='bitcoin')&&(amt>0)){$('#btc_row').show();$('#btc_row').html('<h4>This is equivalent to <font color="red"><b>'+btcV+'</b></font> BTC</h4>');}
+else{$('#btc_row').hide();}});$('#amount').on('blur',function(e){var amt=$('#amount').val();var sid=$('#service_id').val();new_amt=getServiceRate(sid)*amt;$('#get_amount').val("N"+addCommas(new_amt));btcV=(amt/btc_val).toFixed(8);if((sid.toLowerCase()=='btc')&&(amt>0)){$('#btc_row').show();$('#btc_row').html('<h4>This is equivalent to <font color="red"><b>'+btcV+'</b></font> BTC</h4>');}
+else{$('#btc_row').hide();}});function getCurrencyRate(symbol){var result="";$.ajax({url:'/rates/get/'+symbol,async:false,success:function(data){result=data;}});return result;}
+function getServiceRate(sid){var result="";$.ajax({url:'/getRate/'+sid,async:false,success:function(data){result=data;}});return result;}
+function addCommas(nStr)
+{nStr+='';x=nStr.split('.');x1=x[0];x2=x.length>1?'.'+x[1]:'';var rgx=/(\d+)(\d{3})/;while(rgx.test(x1)){x1=x1.replace(rgx,'$1'+','+'$2');}
+return x1+x2;}

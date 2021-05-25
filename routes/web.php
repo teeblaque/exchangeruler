@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('about-us', 'PagesController@about')->name('about');
 Route::get('contact-us', 'PagesController@contact')->name('contact');
 Route::post('contact-us', 'PagesController@contact_post');
+
+Route::get('/t', 'Livedata@index')->name('index');
 
 // Route::get('/{referal}', 'PagesController@referal')->name('index.referal');
 
@@ -31,6 +34,8 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
+
+    //note: ['middleware' => ['auth', 'verified']]
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', 'User\DashboardController@index')->name('user.index');
         Route::get('/settings', 'User\DashboardController@setting')->name('user.settings');

@@ -39,7 +39,7 @@
                             </path>
                         </svg></i></a></div>
         </div>
-        <div class="col-12 col-md-6 order-2 order-md-1">
+        <div class="col-12 col-md-6 order-2 order-md-1" >
             <h3 class="text-white text-center text-md-left text-medium">Quick Links</h3>
             <div class="d-flex flex-column  flex-md-row align-items-center ">
                 <ul class="ant-menu bg-dark w-50 nav d-block ant-menu-light ant-menu-root ant-menu-vertical"

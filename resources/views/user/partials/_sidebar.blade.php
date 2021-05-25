@@ -54,7 +54,25 @@
             <ul class="treeview-menu">
               <li class="treeview">
                 <a href="{{ route('user.sell.bitcoin') }}">
-                  <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell</span>
+                  <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell Bitcoin</span>
+                </a>
+              </li>
+
+              <li class="treeview">
+                <a href="{{ route('user.sell.bitcoin') }}">
+                  <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell USDT</span>
+                </a>
+              </li>
+
+              <li class="treeview">
+                <a href="{{ route('user.sell.bitcoin') }}">
+                  <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell ETHEREUM</span>
+                </a>
+              </li>
+
+              <li class="treeview">
+                <a href="{{ route('user.sell.bitcoin') }}">
+                  <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell Giftcard</span>
                 </a>
               </li>
 

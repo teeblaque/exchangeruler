@@ -1,4 +1,5 @@
- @extends('front.welcome')
+
+@extends('front.welcome')
 
  @section('stylesheets')
     <style>
@@ -142,227 +143,186 @@
  @section('contents')
 
 
- <div section-scroll='0' class="wd_scroll_wrap">
-     <section class="slider-area">
-               <canvas id="canvas" style="opacity: 0.7">
-          <div section-scroll='1' class="wd_scroll_wrap" style="display: none">
-    <section class="about-area pd-t70 pd-b100 jarallax bg-img">
-      <div class="container">
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+<style>
+#test{
+animation-name: test;
+transform: rotateY(180deg);
+animation-duration: 4s;
+animation-iteration-count: infinite;
+margin-top: -200px;
+}
+
+@keyframes test {
+  from {transform: rotateY(0deg);}
+  to {transform: rotateY(360deg);}
+}
+
+</style>
+</head>
+
+<body>
+ 
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+      <h1>Welcome to <span>Exchangeruler</span>
+      </h1>
+       <img  id="test" src="/images/logo_2.png" alt="Card image" style="width: 320px; height: 300px" align="right">
+      <h2>Your best platform for crypto trading</h2>
+      <div class="d-flex">
+        <a href="{{ route('register') }}" class="btn-get-started scrollto">Get Started</a>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services">
+      <div class="container" data-aos="fade-up">
+
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div class="btc_timer_section_wrapper">
-              <div id="clockdiv">
-                <div>
-                  <span class="days"></span>
-                  <div class="smalltext">Days</div>
-                </div>
-                <div>
-                  <span class="hours"></span>
-                  <div class="smalltext">Hours</div>
-                </div>
-                <div>
-                  <span class="minutes"></span>
-                  <div class="smalltext">Minutes</div>
-                </div>
-                <div>
-                  <span class="seconds"></span>
-                  <div class="smalltext">Seconds</div>
-                </div>
-              </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <center><div style="width:80px; height:60px"><img class="card-img-top" src="/images/bitcoin1.png" alt="Card image"></div></center><br>
+              <p class="description">Buy and sell your Bitcoin with ease</p>
+              <a href="{{ route('register') }}" class="btn btn-primary">Get started</a>
             </div>
           </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <center><div style="width:80px; height:60px"><img class="card-img-top" src="/images/ethereum1.png" alt="Card image"></div></center><br>
+              <p class="description">Buy and sell your Ethereum with ease</p>
+              <a href="{{ route('register') }}" class="btn btn-primary">Get started</a>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+              <center><div style="width:80px; height:60px"><img class="card-img-top" src="/images/usdt1.jpg" alt="Card image"></div></center><br>
+              <p class="description">Buy and sell your USDT with ease</p>
+              <a href="{{ route('register') }}" class="btn btn-primary">Get started</a>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+              <center><div style="width:80px; height:60px"><img class="card-img-top" src="/images/giftcard.jpg" alt="Card image"></div></center><br>
+              <p class="description">Buy and sell your Giftcard with ease</p>
+              <a href="{{ route('register') }}" class="btn btn-primary">Get started</a>
+            </div>
+          </div>
+
         </div>
+
       </div>
-    </section>
+    </section><!-- End Featured Services Section -->
 
-  </div>
-      </canvas>
-         <div id="particles-js">
-             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                 <div class="carousel-inner" role="listbox">
-                     <!--<div class="carousel-nevigation" style="z-index: 1">-->
-                     <!--    <a class="prev" href="#carousel-example-generic" role="button" data-slide="prev">-->
-                     <!--        <i class="fa fa-angle-left"></i>-->
-                     <!--    </a>-->
-                     <!--    <a class="next" href="#carousel-example-generic" role="button" data-slide="next">-->
-                     <!--        <i class="fa fa-angle-right"></i>-->
-                     <!---    </a>-->
-                     <!--</div>-->
-                     <div class="item active">
-                         <div class="carousel-captions caption-1">
-                             <div class="container">
-                                 <div class="row">
-                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                         <div class="slider-content">
-                                             <ul style="margin-bottom: -8% !important">
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon1">
-                                                     <h2>Buy </h2>
-                                                 </li>
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon2">
-                                                     <h2>and</h2>
-                                                 </li>
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon3">
-                                                     <h2>Sell</h2>
-                                                 </li>
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon4">
-                                                     <h2>Your</h2>
-                                                 </li>
-                                             </ul>
-                                             <h2 data-animation="animated bounceInLeft" style="margin:-4% !important">
-                                                 <strong style="font-size: 80px;color: #f29c4e !important">Bitcoin
-                                                 </strong> <br><span>&nbsp;With Ease</span> </h2>
-                                             <br>
-                                             <div class="buttons">
-                                                 <a href="{{ route('register') }}" class="btn2"
-                                                     data-animation="animated bounceInUp">Get Started</a>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 hidden-xs hidden-sm">
-                                         <div class="btc_slider_about_img" data-animation="animated bounceInDown">
-                                             <img src="{{ asset('test/images/about/logo_2.png') }}" width="400" height="400" alt="about_img"
-                                                 class="rotate8d">
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                      <div class="item">
-                         <div class="carousel-captions caption-1">
-                             <div class="container">
-                                 <div class="row">
-                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                         <div class="slider-content">
-                                             <ul style="margin-bottom: -8% !important">
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon1">
-                                                     <h2>Buy </h2>
-                                                 </li>
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon2">
-                                                     <h2>and</h2>
-                                                 </li>
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon3">
-                                                     <h2>Sell</h2>
-                                                 </li>
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon4">
-                                                     <h2>Your</h2>
-                                                 </li>
-                                             </ul>
-                                             <h2 data-animation="animated bounceInLeft" style="margin:-4% !important">
-                                                 <strong style="font-size: 80px;color: #f29c4e !important">Ethereum
-                                                 </strong> <br><span>&nbsp;With Ease</span> </h2>
-                                             <br>
-                                             <div class="buttons">
-                                                 <a href="{{ route('register') }}" class="btn2"
-                                                     data-animation="animated bounceInUp">Get Started</a>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 hidden-xs hidden-sm">
-                                         <div class="btc_slider_about_img" data-animation="animated bounceInDown">
-                                             <img src="{{ asset('test/images/about/ent.png') }}" width="400" height="400" alt="about_img"
-                                                 class="rotate8d">
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
 
-                     <div class="item">
-                         <div class="carousel-captions caption-1">
-                             <div class="container">
-                                 <div class="row">
-                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                         <div class="slider-content">
-                                             <ul style="margin-bottom: -8% !important">
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon1">
-                                                     <h2>Buy </h2>
-                                                 </li>
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon2">
-                                                     <h2>and</h2>
-                                                 </li>
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon3">
-                                                     <h2>Sell</h2>
-                                                 </li>
-                                                 <li data-animation="animated bounceInDown" class="slider_social_icon4">
-                                                     <h2>Your</h2>
-                                                 </li>
-                                             </ul>
-                                             <h2 data-animation="animated bounceInLeft" style="margin:-4% !important">
-                                                 <strong style="font-size: 80px;color: #f29c4e !important">USDT
-                                                 </strong> <br><span>&nbsp;With Ease</span> </h2>
-                                             <br>
-                                             <div class="buttons">
-                                                 <a href="{{ route('register') }}" class="btn2"
-                                                     data-animation="animated bounceInUp">Get Started</a>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 hidden-xs hidden-sm">
-                                         <div class="btc_slider_about_img" data-animation="animated bounceInDown">
-                                             <img src="{{ asset('test/images/about/usdt.png') }}" width="400" height="400" alt="about_img"
-                                                 class="rotate8d">
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="item">
-                         <div class="container">
-                             <div class="row">
-                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                     <div class="slider-content">
-                                         <ul style="margin-bottom: -8% !important">
-                                             <li data-animation="animated bounceInDown" class="slider_social_icon1">
-                                                 <h2>Buy </h2>
-                                             </li>
-                                             <li data-animation="animated bounceInDown" class="slider_social_icon2">
-                                                 <h2>and</h2>
-                                             </li>
-                                             <li data-animation="animated bounceInDown" class="slider_social_icon3">
-                                                 <h2>Sell</h2>
-                                             </li>
-                                             <li data-animation="animated bounceInDown" class="slider_social_icon4">
-                                                 <h2>Your</h2>
-                                             </li>
-                                         </ul>
-                                         <h2 data-animation="animated bounceInLeft" style="margin:-4% !important">
-                                             <strong style="font-size: 80px;color: #f29c4e !important">GiftCard
-                                             </strong> <br><span>&nbsp;With Ease</span> </h2>
-                                         <br>
-                                         <div class="buttons">
-                                             <a href="{{ route('register') }}" class="btn2"
-                                                 data-animation="animated bounceInUp">Get Started</a>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12  hidden-xs hidden-sm">
-                                     <div class="btc_slider_about_img" data-animation="animated bounceInDown">
-                                         <img src="{{ asset('test/images/about/GIFTCARDS.png') }}" style="width: 400px; height: 400px;" alt="about_img"
-                                             class="spin4">
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                     <!--<div class="carousel-nevigation" style="z-index: 1">-->
-                     <!--    <a class="prev" href="#carousel-example-generic" role="button" data-slide="prev">-->
-                     <!--        <i class="fa fa-angle-left"></i>-->
-                     <!--    </a>-->
-                     <!--    <a class="next" href="#carousel-example-generic" role="button" data-slide="next">-->
-                     <!--        <i class="fa fa-angle-right"></i>-->
-                     <!--    </a>-->
-                     <!--</div>-->
-                 </div>
-             </div>
-         </div>
-     </section>
+    <section id="clients" class="clients section-bg">
+      <div class="container" data-aos="zoom-in">
 
-     <section class="currency-area" style="visibility: visible!important;">
+        <center>
+          <div class="row">
+          <div class="col-md-6 col-lg-2 d-flex align-items-stretch mb-5 mb-lg-0" style="background-color: #004472; color: white">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <center><img class="card-img-top" src="assets/img/clients/itune.jpeg" style="width:140px; height:110px"></center><br>
+              <p class="description" style="color: white">iTunes encode</p>
+             WE ARE BUYING AT THE RATE OF N289/$
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-2 d-flex align-items-stretch mb-5 mb-lg-0" style="background-color: #004472; color: white; margin-left: 4%">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <center><img class="card-img-top" src="assets/img/clients/onevanilla.jpeg" style="width:140px; height:100px"></center><br>
+              <p class="description" style="color: white">Onevanilla</p>
+              WE ARE BUYING AT THE RATE OF N315/$
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-2 d-flex align-items-stretch mb-5 mb-lg-0" style="background-color: #004472; color: white ; margin-left: 4%">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+              <center><img class="card-img-top" src="assets/img/clients/ebay.jpeg" style="width:140px; height:100px"></center><br>
+              <p class="description" style="color: white">Ebay</p>
+              WE ARE BUYING AT THE RATE OF N329/$
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-2 d-flex align-items-stretch mb-5 mb-lg-0" style="background-color: #004472; color: white; margin-left: 4%">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+              <center><img class="card-img-top" src="assets/img/clients/xbox.png" style="width:140px; height:100px"></center><br>
+              <p class="description" style="color: white">Xbox AUD</p>
+               WE ARE BUYING AT THE RATE OF N190/$
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-2 d-flex align-items-stretch mb-5 mb-lg-0" style="background-color: #004472; color: white; margin-left: 4%">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+              <center><img class="card-img-top" src="assets/img/clients/apple.jpeg" style="width:140px; height:100px"></center><br>
+              <p class="description" style="color: white">Apple store Card</p>
+               WE ARE BUYING AT THE RATE OF N336/$
+            </div>
+        </div>
+      </center>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+
+
+    <!-- ======= Portfolio Section ======= -->
+
+  </main><!-- End #main -->
+
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+
+ 
+
+
+
+    <!--  <section class="currency-area" style="visibility: visible!important;">
          <div class="btc mb-5 row justify-content-center">
              {{-- <div class="btc-rates btc-card mx-2 my-2 col-11 col-md-4"
           style="background-image: url(images/btc-watermark.svg);">
@@ -415,8 +375,150 @@
              </div>
      </section>
  </div>
+ 
+ </div> 
+ -->
 
- <section class="py-5 why-us">
+
+
+
+
+<!-- ======= About Section ======= -->
+    <section id="about" class="about section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h3>The Easiest and Most Secure way to Trade <span>Bitcoins and Giftcards</span></h3>
+          <center><h4>Buy & Sell from anywhere!</4></center>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12" data-aos="zoom-out" data-aos-delay="100">
+            <center><img src="/images/main.png" class="img-fluid" alt=""></center>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+
+<section id="featured-services" class="featured-services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <center><div style="width:80px; height:60px"><img src="images/icon-1.svg" alt="Fast payout"
+                     class="why-us-icon d-block mx-auto mb-3"></div></center><br>
+              <span class="why-us-title text-center d-block">Fast
+                     Payout</span>
+              <p class="text-center">You get paid immediately your transaction is completed. Directly to your bank
+                     account
+                 </p>
+            </div>
+          </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <center><div style="width:80px; height:60px"><img src="images/icon-2.svg"
+                     alt="Round the Clock Access" class="why-us-icon d-block mx-auto mb-3"></div></center><br>
+              <span class="why-us-title text-center d-block">Round the Clock Access</span>
+              <p class="text-center">We are online 24/7 to do business and help you make money round-the-clock.
+                 </p>
+            </div>
+          </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <center><div style="width:80px; height:60px"><img src="images/icon-3.svg"
+                     alt="Secure Trading" class="why-us-icon d-block mx-auto mb-3"></div></center><br>
+              <span class="why-us-title text-center d-block">Secure Trading</span>
+              <p class="text-center">We handle millions in transactions daily. Trust us to pay you every single time.
+                 </p>
+            </div>
+          </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <center><div style="width:80px; height:60px"><img src="images/icon-4.svg"></div></center><br>
+              <span class="why-us-title text-center d-block">No extra Charges</span>
+              <p class="text-center">We charge nothing extra for transactions. You only pay according to our fixed
+                     rates
+                 </p>
+            </div>
+          </div>
+
+            </div>
+
+      </div>
+    </section>
+
+    <!-- ======= Team Section ======= -->
+    <!-- <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100" style="padding-top:2%">
+            <div class="member">
+              <div class="member-img">
+               <img src="images/icon-1.svg" alt="Fast payout"
+                     class="why-us-icon d-block mx-auto mb-3"><span class="why-us-title text-center d-block">Fast
+                     Payout</span>
+                 <p class="text-center">You get paid immediately your transaction is completed. Directly to your bank
+                     account
+                 </p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200" >
+            <div class="member">
+              <div class="member-img" style="padding-top:2%">
+                <img src="images/icon-2.svg"
+                     alt="Round the Clock Access" class="why-us-icon d-block mx-auto mb-3"><span
+                     class="why-us-title text-center d-block">Round the Clock Access</span>
+                 <p class="text-center">We are online 24/7 to do business and help you make money round-the-clock.</p>
+            </div>
+          </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300" style="padding-top:2%">
+            <div class="member">
+              <div class="member-img">
+                <img src="images/icon-3.svg"
+                     alt="Secure Trading" class="why-us-icon d-block mx-auto mb-3"><span
+                     class="why-us-title text-center d-block">Secure Trading</span>
+                 <p class="text-center">We handle millions in transactions daily. Trust us to pay you every single time.
+                 </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400" style="padding-top:2%">
+            <div class="member">
+              <div class="member-img">
+                <img src="images/icon-4.svg"
+                     alt="No extra Charges" class="why-us-icon d-block mx-auto mb-3"><span
+                     class="why-us-title d-block text-center">No extra Charges</span>
+                 <p class="text-center">We charge nothing extra for transactions. You only pay according to our fixed
+                     rates
+                 </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+ -->
+
+
+
+
+<!--  <section class="py-5 why-us">
      <h1 class="text-center">The Easiest and Most Secure way to Trade Bitcoins and Giftcards</h1>
      <h3 class="mb-3 text-center"> Buy &amp; Sell from anywhere!</h3>
      <div class="carousel d-flex justify-content-center"><img src="images/main.png" class="mt-5 img-fluid"
@@ -450,9 +552,12 @@
              </div>
          </div>
      </div>
- </section>
- <section class=" started pt-5" id="howtouse">
-     <div class="container">
+ </section> -->
+
+
+<div class="container" style="background-color: white">
+ <section  class=" started pt-5" id="howtouse"  style="background-color: white">
+     <div class="container" style="background-color: white">
          <h2 class="text-center text-md-left"><strong>Get Started in 3 Easy Steps</strong></h2>
          <div class="row d-flex  justify-content-between">
              <div class="col-12 col-md-6 col-lg-5 mt-5 order-2 order-md-1">
@@ -501,5 +606,6 @@
          </div>
      </div>
  </section>
+</div>
 
  @endsection

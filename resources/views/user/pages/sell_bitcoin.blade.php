@@ -95,7 +95,7 @@
 
                                         <div class="form-group col-md-12" id="btc_amount">
                                             <label class="font-weight-semibold" for="sell_rate">BTC Amount:</label>
-                                            <input type="text" placeholder="0.00" class="form-control" name="btc_amount" id="btc_amt" placeholder="Total Amount In BTC">
+                                            <input type="text" placeholder="0.00" class="form-control" name="btc_amount" id="btc_amt" placeholder="Total Amount In BTC" readonly>
                                             <div class="invalid-feedback" id="err_amount"></div>
                                         </div>
 
@@ -237,7 +237,7 @@
                 }).done(function(data){
                     // console.log(data);
                     rate = data.rate;
-                    $("#our_rate").val('$'+data.rate);
+                    $("#our_rate").val(data.rate);
                     if (data.product_type == "bitcoin") {
                     $("#btc_amount").show();
                     $("#btc_row").show();

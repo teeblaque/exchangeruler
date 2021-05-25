@@ -3,7 +3,7 @@
       <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-center"><a href="{{ route('index') }}">
           <img src="{{ asset('images/logo_1.png') }}" style="height: 35px;width: auto;" alt="brand logo" class="img-fluid logo spin"><span style="font-weight: bolder; font-size: 16px; padding-left: 10px; text-transform: uppercase;color:#29c1dc"><img src="{{ asset('images/logo_3.png') }}" alt="" width="150" height="150"></span></a>
-          &nbsp;&nbsp;&nbsp;&nbsp;<div class="d-inline-block ml-5 ml-xl-3"><span class="bitcoin-price">1 BTC = ${{ $menu }}</span></div>
+          &nbsp;&nbsp;&nbsp;&nbsp;<div class="d-inline-block ml-5 ml-xl-3"><span class="bitcoin-price"></span></div>
         </div>
         <span class="ant-dropdown-link ant-dropdown-trigger d-flex d-xl-none hamburger-cont high-index button1" class="button1"><i
           aria-label="icon: menu" class="anticon anticon-menu hamburger ant-dropdown-link"><svg
@@ -37,7 +37,7 @@
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
-                                                </li>
+          </li>
       @endauth
     </ul>
   </div>

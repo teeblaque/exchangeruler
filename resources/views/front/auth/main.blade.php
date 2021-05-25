@@ -4,8 +4,6 @@
     @include('front.auth.partials._head')
 </head>
 <body>
-    
-    @include('front.partials._loader')
 
     @include('front.auth.partials._nav')
 

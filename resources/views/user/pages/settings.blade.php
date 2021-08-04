@@ -1,3 +1,6 @@
+<?php
+use App\PostModel;
+?>
 @extends('user.main')
 
 @section('title')
@@ -15,6 +18,36 @@
     <div class="alert alert-danger" role="alert">
         Kindly Update Your Bank Information !!!
     </div>
+    <button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Check Info update here</button>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Important Announcement</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            @foreach(PostModel::all() as $post)
+             <b>{{ $post['subject']}}</b><br><hr>
+             <p>{{$post['message']}}</p>
+            @endforeach
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+<!--end of modal box  -->
+
 @endif
 <div class="card no-b">
 <div class="card-header white pb-0">
@@ -238,5 +271,9 @@
             /* Alert the copied text */
             alert("Share Code: "+ copyText.value);
         }
+
+$(document).ready(function() {
+  $('#myModal').modal('show');
+});
     </script>
 @endsection

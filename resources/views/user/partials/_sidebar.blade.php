@@ -1,3 +1,40 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+<!-- Modal -->
+<div id="myModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h5 class="modal-title">Kindly send us feedback below to enable us to improve our services for you.</h5>
+      </div>
+      <div class="modal-body">
+        <p>
+            <form id="addOrder" method="POST" action="{{ route('user.feedback') }}" onsubmit="success()">
+             @csrf
+                <font color='red'>*Required</font><input type="text" class="form-control" placeholder="Customer name" name="feedback_name" required><br>
+                <font color='red'>*Required</font><input type="text" class="form-control" placeholder="Subject" name="feedback_subject" required><br>
+                <font color='red'>*Required</font><textarea class="form-control" placeholder="Send your feedback here" name="feedback_message" required></textarea><br>
+                <button class="btn btn-success form-control" type="submit" name="sub1">Submit</button>
+            </form>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
 <aside class="main-sidebar fixed offcanvas shadow" data-toggle="offcanvas">
       <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 392px;">
         <section class="sidebar" style="height: 392px; overflow: hidden; width: auto;">
@@ -28,11 +65,54 @@
         </div>
         <ul class="sidebar-menu">
           <li class="header"><strong>MAIN NAVIGATION</strong></li>
-          <li class="treeview">
-            <a href="{{ route('user.index') }}">
-              <i class="icon icon-sailing-boat-water purple-text s-18"></i> <span>Dashboard</span>
-            </a>
+
+
+          <!--<li class="treeview"><a href="#"><i class="icon icon-plus light-green-text s-18">-->
+          <!--    <a href="{{ route('user.index') }}">-->
+          <!--    </i>Dashboard<i class="icon icon-angle-left s-18 pull-right"></i>-->
+          <!--    </a>-->
+              
+          <li class="treeview"><a href="{{ route('user.index') }}"><i class="icon icon-plus light-green-text s-18"></i>
+          Dashboard<i class="icon icon-angle-left s-18 pull-right"></i></a>
+             </a>
+            <ul class="treeview-menu">
+                @if(Auth::user()->role=="superadmin")
+              <li class="treeview">
+                <a href="{{ route('user.index') }}">&nbsp&nbsp
+                  <i class="fa fa-history" style='font-size: 18px'></i><span>&nbsp&nbsp&nbsp History</span>
+                </a>
+              </li>
+              
+              <li class="treeview">
+                <a href="{{ route('admin.dashboard') }}">&nbsp&nbsp
+                  <i class="fa fa-bar-chart" style='font-size: 18px'></i><span>&nbsp&nbsp&nbsp Charts & Analytics</span>
+                </a>
+              </li>
+              
+              @else
+              <!--<li class="treeview">-->
+              <!--  <a href="{{ route('user.index') }}">&nbsp&nbsp-->
+              <!--    <i class="fa fa-history" style='font-size: 18px'></i><span>&nbsp&nbsp&nbsp History1</span>-->
+              <!--  </a>-->
+              <!--</li>-->
+             @endif
+              <!--<li class="treeview">-->
+              <!--  <a href="{{ route('user.index') }}">&nbsp&nbsp-->
+              <!--    <i class="fa fa-bitcoin" style="font-size:18x"></i><span>&nbsp&nbsp&nbsp Transaction</spaan>-->
+              <!--  </a>-->
+              <!--</li>-->
+
+              <!--<li class="treeview">-->
+              <!--  <a href="{{ route('user.index') }}">&nbsp&nbsp-->
+              <!--    <i class="fa fa-user-plus" style="font-size:18px"></i> <span>&nbsp&nbsp&nbsp Referals</span>-->
+              <!--  </a>-->
+              <!--</li>-->
+
+
+            </ul>
           </li>
+          
+          
           @if (Auth::user()->role == 'user')
            <li class="header"><strong>Wallets</strong></li>
           <li class="treeview">
@@ -48,41 +128,80 @@
                 </a>
               </li>
 
-              <li class="header"><strong>ORDER MANAGEMENT</strong></li>
+        <li class="header"><strong>ORDER MANAGEMENT</strong></li>
           <li class="treeview"><a href="#"><i class="icon icon-plus light-green-text s-18">
               </i>Create Order <i class="icon icon-angle-left s-18 pull-right"></i></a>
             <ul class="treeview-menu">
               <li class="treeview">
                 <a href="{{ route('user.sell.bitcoin') }}">
-                  <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell Bitcoin</span>
+                  <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell Cryptocurrency</span>
                 </a>
               </li>
 
-              <li class="treeview">
-                <a href="{{ route('user.sell.bitcoin') }}">
-                  <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell USDT</span>
-                </a>
-              </li>
+              <!--<li class="treeview">-->
+              <!--  <a href="{{ route('user.sell.bitcoin') }}">-->
+              <!--    <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell USDT</span>-->
+              <!--  </a>-->
+              <!--</li>-->
+
+              <!--<li class="treeview">-->
+              <!--  <a href="{{ route('user.sell.bitcoin') }}">-->
+              <!--    <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell ETHEREUM</span>-->
+              <!--  </a>-->
+              <!--</li>-->
 
               <li class="treeview">
-                <a href="{{ route('user.sell.bitcoin') }}">
-                  <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell ETHEREUM</span>
-                </a>
-              </li>
-
-              <li class="treeview">
-                <a href="{{ route('user.sell.bitcoin') }}">
+                <a href="{{ route('user.sell.gift_card') }}">
                   <i class="icon icon-sellsy purple-text s-18"></i> <span>Sell Giftcard</span>
                 </a>
               </li>
 
             </ul>
           </li>
-          <li class="treeview">
-              <a href="{{ route('user.orders') }}">
-                <i class="icon icon-gear purple-text s-18"></i> <span>View Orders</span>
-              </a>
-            </li>
+          <!--<li class="treeview">-->
+          <!--    <a href="{{ route('user.orders') }}">-->
+          <!--      <i class="icon icon-gear purple-text s-18"></i> <span>View Orders</span>-->
+          <!--    </a>-->
+          <!--  </li>-->
+          
+          
+          <li class="treeview"><a href="#"><i class="icon icon-plus light-green-text s-18">
+              </i>Orders <i class="icon icon-angle-left s-18 pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li class="treeview">
+                <a href="{{ route('user.orders') }}">
+                  <i class="icon icon-sellsy purple-text s-18"></i> <span>New orders</span>
+                </a>
+              </li>
+
+              <li class="treeview">
+                <a href="{{ route('user.orders') }}">
+                  <i class="icon icon-pause purple-text s-18"></i> <span>Pending orders</span>
+                </a>
+              </li>
+
+              <li class="treeview">
+                <a href="{{ route('user.orders') }}">
+                  <i class="icon icon-check purple-text s-18"></i> <span>Completed orders</span>
+                </a>
+              </li>
+
+              <li class="treeview">
+                <a href="{{ route('user.orders') }}">
+                  <i class="icon icon-times purple-text s-18"></i> <span>Cancelled orders</span>
+                </a>
+              </li>
+              
+              <li class="treeview">
+                <a href="{{ route('user.orders') }}">
+                  <i class="icon icon-search purple-text s-18"></i> <span>Find orders</span>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          
+          
           @endif
 
           @if (Auth::user()->role == 'junior')
@@ -108,7 +227,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
+            </li><hr>
             @endif
 
             @if (Auth::user()->role == 'admin')
@@ -197,17 +316,40 @@
                 </li>
               </ul>
             </li>
-
+            
+            <!--<li class="treeview">-->
+            <!--  <a href="{{ route('admin.users') }}">-->
+            <!--    <i class="icon icon-gear purple-text s-18"></i> <span>Users</span>-->
+            <!--  </a>-->
+            <!--</li>-->
+            
             <li class="treeview">
-              <a href="{{ route('admin.users') }}">
+              <a href="{{ route('admin.users_status') }}">
                 <i class="icon icon-gear purple-text s-18"></i> <span>Users</span>
               </a>
             </li>
+            
             <li class="treeview">
               <a href="{{ route('admin.staff') }}">
                 <i class="icon icon-gear purple-text s-18"></i> <span>Staff</span>
               </a>
             </li>
+            <hr>
+            <style>
+                .header1:hover{
+                    background-color:#f0e9ee;
+                }
+                
+            </style>
+             @if(Auth::user()->role == 'junior' || Auth::user()->role == 'superadmin')
+             <span><li class="header1" style="margin-left: 2%"><strong>Configuration</strong></li></span>
+            <li class="treeview">
+              <a href="{{ route('admin.message') }}">
+               <i class="icon icon-gear purple-text s-18"></i> <span>Pop up</span>
+              </a>
+            </li><hr>
+            @endif
+            
             <li class="treeview">
               <a href="{{ route('admin.blockchain') }}">
                 <i class="icon icon-gear purple-text s-18"></i> <span>Crypto</span>
@@ -220,6 +362,19 @@
                 <i class="icon icon-gear purple-text s-18"></i> <span>Settings</span>
               </a>
             </li>
+            
+            <li class="treeview">
+              <a href="http://www.chat.konnecticom.com"> 
+                <i class='icon icon-comments' style='font-size:18px'></i><span>Chat</span>
+              </a>
+            </li>
+              
+             <li class="treeview">
+              <a href="" data-toggle="modal" data-target="#myModal1"> 
+                <i class="material-icons">feedback</i><span style="margin-left:8%">Send Feedback</span>
+              </a>
+            </li>
+            
             <li class="treeview">
               <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -235,3 +390,9 @@
         <div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
     </div>
       </aside>
+      
+<script>
+    function success(){
+        alert("Feedback sent successfully");
+    }
+</script>

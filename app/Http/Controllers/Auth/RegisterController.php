@@ -86,7 +86,8 @@ class RegisterController extends Controller
             'role' => 'user',
             'mobile' => $data['mobile'],
             'referal_code' => 'ER' . Str::random(8),
-            'referee' => $data['referee']
+            'referee' => $data['referee'],
+            'social_media' => $data['social_media']
         ]);
 
         if ($user) {

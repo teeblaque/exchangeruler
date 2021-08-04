@@ -28,10 +28,10 @@ class ComposerServiceProvider extends ServiceProvider
         // You can use a class for composer
         // you will need NavComposer@compose method
         // which will be called everythime partials.nav is requested
-        View::composer(
-            'front.partials._nav',
-            'App\Http\ViewComposers\NavComposer'
-        );
+        // View::composer(
+        //     'front.partials._nav',
+        //     'App\Http\ViewComposers\NavComposer'
+        // );
 
         // You can use Closure based composers
         // which will be used to resolve any data

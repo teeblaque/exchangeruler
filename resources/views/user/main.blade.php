@@ -3,7 +3,7 @@
 <head>
     @include('user.partials._head')
 </head>
-<body class="light">
+<body>
     
 
     <div id="loader-wrapper" style="position: fixed;">

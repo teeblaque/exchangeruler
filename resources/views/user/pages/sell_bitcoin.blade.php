@@ -56,10 +56,15 @@
                                             <option value="bitcoin">Bitcoin</option>
                                             <option value="usdt">USDT</option>
                                             <option value="ethereum">ETHEREUM</option>
-                                            <option value="giftcard">Giftcard</option>
+                                            <!--<option value="giftcard">Giftcard</option>-->
                                         </select>
                                         <div class="invalid-feedback" id="err_type"></div>
                                     </div>
+                                    <div class="alert alert-danger"><u>Crypto Wallet</u><br>
+                                        <p><b>*Note:</b> Bitcoin(Bockchain and Paxful)</p>
+                                        <p><b>*Note:</b> ETH(Bockchain and Paxful)</p>
+                                        <p><b>*Note:</b> USDT(TRC 20)</p>
+                                     </div>
                                     <div class="form-group col-md-12">
                                         <label class="font-weight-semibold" for="name">Services</label>
                                         <select name="services" id="services" class="form-control">

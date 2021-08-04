@@ -47,10 +47,10 @@
                             <td>{{ Str::ucfirst($catalogue->product_name) }}</td>
                             <td>{{ $catalogue->denomination }}</td>
                             <td>{{ $catalogue->rate }}</td>
-                            @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin' || Auth::user()->role == 'accountant')
+                            @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin' || Auth::user()->role == 'accountant' || Auth::user()->role == 'junior')
                             <td>
                             <button class="btn btn-success" data-toggle="modal" data-target="#editModal"  onclick="fun_edit('{{ $catalogue->id }}')"><i class="ti-pencil icon-md"></i>Edit</button>
-                            &nbsp;&nbsp;<button class="btn btn-danger pull-right" onclick="fun_delete('{{ $catalogue->id }}')"><i class="ti-trash icon-md"></i>Delete</button>
+                            <button class="btn btn-danger pull-right" onclick="fun_delete('{{ $catalogue->id }}')"><i class="ti-trash icon-md"></i>Delete</button>
                             </td>
                        @endif
 

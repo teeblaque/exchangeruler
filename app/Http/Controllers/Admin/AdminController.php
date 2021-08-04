@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
+use App\Message;
+use DB;
 
 class AdminController extends Controller
 {
@@ -351,6 +353,33 @@ class AdminController extends Controller
             $orders = Order::where('user_id', $id)->get();
             return view('admin.user_detail', ['user' => $user, 'orders' => $orders]);
        }
+    }
+
+
+  public function user_detail2(){
+        $merged=DB::table('users')
+                ->join('wallets', 'users.id', '=', 'wallets.user_id')
+                ->join('withdrawals', 'users.id', '=', 'withdrawals.user_id')
+                ->select('users.id', 'users.name', 'users.email', 'users.mobile', 'users.role',
+                    'users.referal_code',
+                    'users.referee', 'withdrawals.amount', 'withdrawals.status','wallets.balance',
+                    'users.created_at', 'users.last_login')
+                ->get();
+        return view('admin.user_detail', ['merged'=>$merged]);
+  
+
+        }
+        
+     public function credit_view(){
+        return view('admin.user_balance');
+    }
+    
+    public function credit(Request $request, $id){
+        $credit= new Wallet;
+        $credit->balance=$request->get('balance');
+        $credit->where('user_id', $id)->increment('balance', $credit->balance);
+        return redirect('/admin/dashboard');
+        
     }
 
     public function approve_view(Request $request)

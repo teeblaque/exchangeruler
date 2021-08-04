@@ -126,6 +126,33 @@
                     <input type="text" class="form-control form-control-lg border-left-0" name="affiliate_code" id="exampleInputEmail" placeholder="Enter affiliate code(optional)">
                   </div>
                 </div> --}}
+                
+                
+                <label for="social_media">*Got our advertisment from?</label>
+                <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="ti-user text-primary"></i>
+                      </span>
+                    </div>
+                    <select class="form-control form-control-lg border-left-0" id="social_media" name="social_media" required>
+                        <option value="facebook">Facebook</option>
+                        <option value="instalgram">Instagram</option>
+                        <option value="twitter">Twitter</option>
+                    </select>
+                  </div>
+                    
+                    <!--<div class="radio">-->
+                    <!--  <label><input type="radio" name="social_media" value="facebook" checked> Facebook</label>-->
+                    <!--</div>-->
+                    <!--<div class="radio">-->
+                    <!--  <label><input type="radio" name="social_media" value="instalgram"> Instalgram</label>-->
+                    <!--</div>-->
+                    <!--<div class="radio disabled">-->
+                    <!--  <label><input type="radio" name="social_media" value="twitter">Twitter</label>-->
+                    <!--</div>-->
+ 
+                
                     <div class="form-group d-flex flex-column justify-content-center"><span class="terms">By
                       signing up you agree to our <span class="text-primary">Terms and Conditions </span></span>
                       </div>

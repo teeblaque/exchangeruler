@@ -1,4 +1,12 @@
 <meta charset="utf-8">
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
   <link href="{{ asset('favicon.png') }}" rel="icon">
   <meta content="width=device-width,initial-scale=1" name="viewport">
   <meta content="#000000" name="theme-color">
@@ -34,6 +42,15 @@
   <!-- <link href="Test slider/css/video-js.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="{{ asset('test/style.css') }}">
   <!-- <link rel="stylesheet" href="Test slider/css/responsive.css"> -->
+  
+  
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MBK5PNX');</script>
+<!-- End Google Tag Manager -->
   
  
 

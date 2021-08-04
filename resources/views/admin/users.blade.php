@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 @extends('user.main')
 
 @section('title')
@@ -12,10 +15,7 @@
           <div class="row my-3">
             <div class="col-md-12">
               <div class="card r-0 shadow">
-                <div class="card-header white pb-0">
-                  <p>Users</p>
-                </div>
-                <br>
+               
                 <div class="table-responsive">
 
 
@@ -31,6 +31,9 @@
                         <th>Role</th>
                         <th>Date Created</th>
                         @if(Auth::user()->role == 'superadmin')
+                        <th>Ref Code</th>
+                        <th>User Ref</th>
+                        <th>User Balance</th>
                         <th>Last Login</th>
                             <th>Action</th>
                         @endif
@@ -49,6 +52,7 @@
                         <th>Role</th>
                         <th>Date Created</th>
                         @if(Auth::user()->role == 'superadmin')
+                            <th>Ref code</th>
                             <th>Last Login</th>
                             <th>Action</th>
                         @endif
@@ -66,6 +70,8 @@
                           <td>{{ $user->role }}</td>
                           <td>{{ $user->created_at->format('d-M-Y') }}</td>
                           @if (Auth::user()->role == 'superadmin')
+                              <td>{{ $user->referal_code }}</td>
+                               <td>{{ $user->referee }}</td>
                               <td>{{ $user->last_login }}</td>
                           @endif
                         <td>

@@ -1,13 +1,18 @@
+<?php
+use App\PostModel;
+?>
+
 @extends('user.main')
 
 @section('title')
     <h4>
-        <i class="icon-box"></i>
-        Dashboard
+        <!--<i class="icon-box">-->
+        <i class="icon-dashboard" style="font-color:black"></i><font color="black">Dashboard</font>
     </h4>
 @endsection
 
 @section('contents')
+
     <div class="container-fluid animatedParent animateOnce my-3">
             <div class="animated fadeInUpShort">
               <div class="lightSlider" data-item="4" data-item-xl="4" data-item-md="2" data-item-sm="1" data-pause="3000" data-pager="false" data-auto="true" data-loop="false">
@@ -95,3 +100,12 @@
           </div>
 @endsection
 
+
+
+
+ <script>
+
+        $(document).ready(function() {
+          $('#myModal').modal('show');
+        });
+    </script>

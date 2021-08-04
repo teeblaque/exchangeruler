@@ -21,7 +21,7 @@ Route::get('about-us', 'PagesController@about')->name('about');
 Route::get('contact-us', 'PagesController@contact')->name('contact');
 Route::post('contact-us', 'PagesController@contact_post');
 
-Route::get('/t', 'Livedata@index')->name('index');
+Route::get('/testing', 'User\DashboardController@index')->name('admin.index');
 
 // Route::get('/{referal}', 'PagesController@referal')->name('index.referal');
 
@@ -32,17 +32,25 @@ Route::get('/test-event', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('t', 'Admin\CatalogueController@messageAlert');
 
-Route::group(['middleware' => ['auth', 'verified']], function () {
+
+Route::group(['middleware' => 'auth'], function () {
 
     //note: ['middleware' => ['auth', 'verified']]
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', 'User\DashboardController@index')->name('user.index');
         Route::get('/settings', 'User\DashboardController@setting')->name('user.settings');
-
+        
+        Route::get('/chat', 'User\DashboardController@chat')->name('user.chat');
+        
+        Route::post('/feedback', 'User\DashboardController@feedback')->name('user.feedback');
+        
         //buy bitcoin
         Route::get('/sell', 'User\DashboardController@sell_bitcoin')->name('user.sell.bitcoin');
         Route::post('/sell', 'User\DashboardController@post_bitcoin');
+        Route::get('/sell_gift_card', 'User\DashboardController@sell_gift_card')->name('user.sell.gift_card');
+        Route::post('/sell_gift_card', 'User\DashboardController@post_bitcoin');
 
         //fund
         Route::get('/fund', 'User\DashboardController@sell_fund')->name('user.sell.fund');
@@ -85,8 +93,15 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::post('/create-catalogue', 'Admin\CatalogueController@post_catalogue');
         Route::post('create-catalogue-delete', 'Admin\CatalogueController@delete')->name('admin.catalogue.delete');
         Route::get('create-catalogue-edit', 'Admin\CatalogueController@edit')->name('admin.catalogue.edit');
-        Route::post('create-catalogue-update', 'Admin\CatalogueController@update')->name('admin.catalogue.update');
-
+        Route::put('create-catalogue-update', 'Admin\DashboardController@update')->name('admin.catalogue.update');
+        
+        Route::get('/message', 'Admin\CatalogueController@message')->name('admin.message');
+        Route::get('/update', 'Admin\CatalogueController@change1');
+        Route::post('/update', 'Admin\CatalogueController@change');
+        Route::get('/users_status', 'Admin\CatalogueController@users_detail1')->name('admin.users_status');
+        Route::get('/index', 'User\DashboardController@index')->name('admin.index');
+        Route::get('/dashboard', 'Admin\CatalogueController@dashboard')->name('admin.dashboard');
+         
         //orders
         Route::get('/orders', 'Admin\AdminController@orders')->name('admin.orders');
         Route::get('/order-pending', 'Admin\AdminController@orders_pending')->name('admin.orders.pending');
@@ -125,6 +140,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
         //user details
         Route::get('/user-details/{id}/user', 'Admin\AdminController@user_details')->name('admin.user.details');
+        Route::get('/user-details', 'Admin\AdminController@user_detail2');
+        Route::get('/user_balance/{id}', 'Admin\AdminController@credit_view')->name('admin.user_balance');
+        Route::post('/user_balance/{id}', 'Admin\AdminController@credit')->name('admin.user_balance');
+        
 
     });
 });

@@ -35,6 +35,6 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-        Event::subscribe('App\Handlers\Events\AuthEventHandler');
+        // Event::subscribe('App\Handlers\Events\AuthEventHandler');
     }
 }

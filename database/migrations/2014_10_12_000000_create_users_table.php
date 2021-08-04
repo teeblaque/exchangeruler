@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('mobile');
             $table->string('referal_code')->nullable();
             $table->string('affiliate_code')->nullable();
+            $table->string('social_media');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('role');
             $table->string('password');

@@ -30,7 +30,13 @@ return [
 
     'connections' => [
 
-        'pusher' => [
+
+        'options' => [
+             'cluster' => 'eu',
+             'useTLS' => true
+            ],
+
+         'pusher' => [
             'driver' => 'pusher',
             'key' => env('PUSHER_APP_KEY'),
             'secret' => env('PUSHER_APP_SECRET'),
@@ -39,6 +45,11 @@ return [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'useTLS' => true,
             ],
+
+            'larasocket' => [
+                    'driver' => 'larasocket',
+                    'token' => env('LARASOCKET_TOKEN'),
+                ],
         ],
 
         'redis' => [

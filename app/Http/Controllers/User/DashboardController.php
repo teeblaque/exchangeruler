@@ -19,16 +19,42 @@ use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use PhpParser\Node\Expr\Cast\Double;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+    public function chat(){
+        return view("user.pages.chat");    
+    }
+    
+     public function feedback(Request $request){
+        $this->validate($request, [
+                        'feedback_name' => 'required',
+                        'feedback_email' => 'required|email',
+                        'feedback_message' => 'required'
+                ]);
+
+        Mail::send('email', [
+                'feedback_name' => $request->get('feedback_name'),
+                'feedback_email' => $request->get('feedback_email'),
+                'feedback_message' => $request->get('feedback_message') ],
+                function ($message) {
+                        $message->from('info@exchangeruler.org');
+                        $message->to('info@exchangeruler.org', 'Solomon')
+                        ->subject('client feedback');
+        });
+
+        return back()->with('success', 'Thanks for contacting me, I will get back to you soon!');
+
+    }
+    
     public function index()
     {
         $account = Account::where('user_id', Auth::user()->id)->first();
-        if ($account) {
-            $user_role = User::select('role')->where('id', Auth::id())->first();
+        // if ($account) {
+        //     $user_role = User::select('role')->where('id', Auth::id())->first();
 
-            if ($user_role['role'] == 'superadmin' || $user_role['role'] == 'account') {
+            // if ($user_role['role'] == 'superadmin' || $user_role['role'] == 'accountant') {
                 $total = Order::all();
                 $pending = Order::where('status', 'Pending')->get();
                 $cancel = Order::where('status', 'Cancelled')->get();
@@ -41,49 +67,50 @@ class DashboardController extends Controller
                     'accounts' => $account, 'total' => $total, 'pending' => $pending, 'cancel' => $cancel, 'complete' => $complete,
                     'transactions' => $transaction, 'users' => $users, 'staffs' => $staffs, 'admin' => $admin
                 ]);
-            }else if($user_role['role'] == 'junior'){
-                $total = Order::all();
-                $pending = Order::where('status', 'Pending')->get();
-                $cancel = Order::where('status', 'Cancelled')->get();
-                $complete = Order::where('status', 'Completed')->get();
-                $transaction = Order::with('catalogue')->where('status', 'pending')->latest()->limit(10)->get();
-                $users = User::where('role', 'user')->get();
-                $staffs = User::where('role', 'admin')->get();
-                $admin = User::Where('role', 'superadmin')->get();
-                return view('admin.index', [
-                    'accounts' => $account, 'total' => $total, 'pending' => $pending, 'cancel' => $cancel, 'complete' => $complete,
-                    'transactions' => $transaction, 'users' => $users, 'staffs' => $staffs, 'admin' => $admin
-                ]);
-            }else if($user_role['role'] == 'admin'){
-                $total = Order::all();
-                $pending = Order::where('status', 'Pending')->get();
-                $cancel = Order::where('status', 'Cancelled')->get();
-                $complete = Order::where('status', 'Completed')->get();
-                $transaction = Order::with('catalogue')->where('status', 'accepted')->latest()->limit(10)->get();
-                $users = User::where('role', 'user')->get();
-                $staffs = User::where('role', 'admin')->get();
-                $admin = User::Where('role', 'superadmin')->get();
-                return view('admin.index', [
-                    'accounts' => $account, 'total' => $total, 'pending' => $pending, 'cancel' => $cancel, 'complete' => $complete,
-                    'transactions' => $transaction, 'users' => $users, 'staffs' => $staffs, 'admin' => $admin
-                ]);
-            }
-            else{
-                $total = Order::where('user_id', Auth::id())->get();
-                $pending = Order::where('user_id', Auth::id())->where('status', 'Pending')->get();
-                $cancel = Order::where('user_id', Auth::id())->where('status', 'Cancelled')->get();
-                $complete = Order::where('user_id', Auth::id())->where('status', 'Completed')->get();
-                $transaction = Order::where('user_id', Auth::id())->latest()->limit(10)->get();
+        //     }else if($user_role['role'] == 'junior'){
+        //         $total = Order::all();
+        //         $pending = Order::where('status', 'Pending')->get();
+        //         $cancel = Order::where('status', 'Cancelled')->get();
+        //         $complete = Order::where('status', 'Completed')->get();
+        //         $transaction = Order::with('catalogue')->where('status', 'pending')->latest()->limit(10)->get();
+        //         $users = User::where('role', 'user')->get();
+        //         $staffs = User::where('role', 'admin')->get();
+        //         $admin = User::Where('role', 'superadmin')->get();
+        //         return view('admin.index', [
+        //             'accounts' => $account, 'total' => $total, 'pending' => $pending, 'cancel' => $cancel, 'complete' => $complete,
+        //             'transactions' => $transaction, 'users' => $users, 'staffs' => $staffs, 'admin' => $admin
+        //         ]);
+        //     }else if($user_role['role'] == 'admin'){
+        //         $total = Order::all();
+        //         $pending = Order::where('status', 'Pending')->get();
+        //         $cancel = Order::where('status', 'Cancelled')->get();
+        //         $complete = Order::where('status', 'Completed')->get();
+        //         $transaction = Order::with('catalogue')->where('status', 'accepted')->latest()->limit(10)->get();
+        //         $users = User::where('role', 'user')->get();
+        //         $staffs = User::where('role', 'admin')->get();
+        //         $admin = User::Where('role', 'superadmin')->get();
+        //         return view('admin.index', [
+        //             'accounts' => $account, 'total' => $total, 'pending' => $pending, 'cancel' => $cancel, 'complete' => $complete,
+        //             'transactions' => $transaction, 'users' => $users, 'staffs' => $staffs, 'admin' => $admin
+        //         ]);
+        //     }
+        //     else{
+        //         $total = Order::where('user_id', Auth::id())->get();
+        //         $pending = Order::where('user_id', Auth::id())->where('status', 'Pending')->get();
+        //         $cancel = Order::where('user_id', Auth::id())->where('status', 'Cancelled')->get();
+        //         $complete = Order::where('user_id', Auth::id())->where('status', 'Completed')->get();
+        //         $transaction = Order::where('user_id', Auth::id())->latest()->limit(10)->get();
 
-                return view('user.pages.index', [
-                    'accounts' => $account, 'total' => $total, 'pending' => $pending, 'cancel' => $cancel, 'complete' => $complete,
-                    'transactions' => $transaction
-                ]);
-            }
+        //         return view('user.pages.index', [
+        //             'accounts' => $account, 'total' => $total, 'pending' => $pending, 'cancel' => $cancel, 'complete' => $complete,
+        //             'transactions' => $transaction
+        //         ]);
+        //     }
 
-        }else{
-            return redirect()->route('user.settings');
-        }
+        // }
+        // else{
+        //     return redirect()->route('user.settings');
+        // }
 
     }
 
@@ -98,6 +125,13 @@ class DashboardController extends Controller
         $catalogue = Catalogue::all();
         $chain = BlockChain::all();
         return view('user.pages.sell_bitcoin', ['catalogue' => $catalogue, 'blocks' => $chain]);
+    }
+    
+     public function sell_gift_card()
+    {
+        $catalogue = Catalogue::all();
+        $chain = BlockChain::all();
+        return view('user.pages.sell_gift_card', ['catalogue' => $catalogue, 'blocks' => $chain]);
     }
     
     public function sell_fund()
@@ -165,12 +199,26 @@ class DashboardController extends Controller
                             }
                         }
                     }
-                    $junior = User::where('role', 'junior')->orWhere('role', 'superadmin')->get();
-                    if (count($junior) > 0) {
-                        foreach ($junior as $value) {
-                            Mail::to($value->email)->send(new UserBid($value));
-                        }
-                    }
+                               
+                                     Mail::send(['text'=>'mailmessage'],['name'=>'solo'], function($message){
+            	        	         $message->to('info@exchangeruler.org')
+            	        	             ->subject('New order');
+                    		         $message->from('info@exchangeruler.org', 'customer');
+            	        	      	});
+                                    
+                                    
+            	        	      	
+            	        	  
+                                    
+                            
+                        	
+                    
+                    // $junior = User::where('role', 'junior')->orWhere('role', 'superadmin')->get();
+                    // if (count($junior) > 0) {
+                    //     foreach ($junior as $value) {
+                    //         Mail::to($value->email)->send(new UserBid($value));
+                    //     }
+                    // }
 
                     return back()->with('success', 'Order Created successfully!!! Our customer service would reach out soon');
                 }
@@ -179,6 +227,7 @@ class DashboardController extends Controller
         } catch (\Throwable $th) {
             return back()->with('error', $th->getMessage());
         }
+        
     }
 
     public function sell_giftcard()

@@ -4,6 +4,7 @@
   <meta name="author" content="">
   <title>ExchangeRuler - User Dashboard</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<meta http-equiv="refresh" content="120">
  <link href="{{ asset('favicon.png') }}" rel="icon">
   <link rel="stylesheet" href="{{ asset('userback/css/panel/app.css') }}">
   <link href="{{ asset('userback/css/panel/font-awesome.min.css" rel="stylesheet') }}">
@@ -21,6 +22,16 @@
     <script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
     
 
+
+ <meta charset="UTF-8">
+    <title>chatapp</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    
 @yield('stylesheet')
 
 

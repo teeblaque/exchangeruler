@@ -93,11 +93,7 @@
 <br>
 
 
-
-
-
-
-
+        @include('front.partials._nav')
 
         @yield('contents')
 

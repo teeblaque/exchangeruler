@@ -4,6 +4,7 @@ namespace App\Http\ViewComposers;
 
 use App\Catalogue;
 use App\Nav;
+use Illuminate\Support\Facades\View;
 
 class NavComposer
 {

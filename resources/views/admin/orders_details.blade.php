@@ -122,7 +122,7 @@
                            @foreach ($orders->images as $item)
                            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
                                <a href="{{ url('images/order/'.$item->avatar) }}" target="_blank"><img src="{{ url('images/order/'.$item->avatar) }}" alt="order" style="width: 100px; height: 100px;"></a>
-                           @else
+                           @elseif(Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
                                <img src="{{ url('images/order/'.$item->avatar) }}" alt="order" style="width: 100px; height: 100px;">
                            @endif
 
